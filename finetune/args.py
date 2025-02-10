@@ -12,6 +12,12 @@ from .data.args import DataArgs
 
 
 @dataclass
+class HuggingFaceArgs(Serializable):
+    token: Optional[str] = None
+    model_id: Optional[str] = None
+    dataset_url: Optional[str] = None
+
+@dataclass
 class OptimArgs(Serializable):
     lr: float = 1e-4
     weight_decay: float = 0.1
@@ -91,7 +97,7 @@ class TrainArgs(Serializable):
     # logging
     wandb: WandbArgs = field(default_factory=WandbArgs)
     mlflow: MLFlowArgs = field(default_factory=MLFlowArgs)
-
+    hugging_face: HuggingFaceArgs = field(default_factory=HuggingFaceArgs)
     # LoRA
     lora: Optional[LoraArgs] = field(default_factory=LoraArgs)
 

@@ -1,0 +1,22 @@
+services:
+  finetune:
+    build: .
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./models:/app/models
+      - ./dataset:/app/dataset
+      - ./config:/app/config
+      - ./output:/app/output
+      - ./utils:/app/utils #Remove after testing
+    tty: true
+    stdin_open: true
+    entrypoint: bash

@@ -172,3 +172,8 @@ eval/eval-*
 
 # Symlinks
 tests/fixtures
+/output
+/models
+/dataset
+/config/local/c_Mistral-7B-v0.3_test_gen-00000-of-00001-3d4cd8309148a71f.yaml
+/config/local/example.yaml

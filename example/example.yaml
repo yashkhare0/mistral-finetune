@@ -1,8 +1,8 @@
 # data
 data:
-  instruct_data: ""  # Fill
-  data: ""  # Optionally fill with pretraining data 
-  eval_instruct_data: ""  # Optionally fill
+  instruct_data: "/app/dataset/dummy_train_data.jsonl"
+  eval_instruct_data: "/app/dataset/dummy_eval_data.jsonl"
+  data: ""
 
 # model
 model_id_or_path: ""  # Change to downloaded path

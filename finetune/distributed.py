@@ -35,7 +35,6 @@ def set_device():
     assert len(visible_devices()) == torch.cuda.device_count()
 
     if torch.cuda.device_count() == 1:
-        # gpus-per-task set to 1
         torch.cuda.set_device(0)
         return
 
@@ -47,6 +46,10 @@ def set_device():
         torch.cuda.device_count(),
     )
     torch.cuda.set_device(local_rank)
+    
+    # Safely get CUDA_VISIBLE_DEVICES with a default value
+    cuda_visible_devices = os.environ.get('CUDA_VISIBLE_DEVICES', '0')
+    logger.info(f"CUDA_VISIBLE_DEVICES: {cuda_visible_devices}")
 
 
 def avg_aggregate(metric: Union[float, int]) -> Union[float, int]:
