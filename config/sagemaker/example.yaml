@@ -1,0 +1,40 @@
+# data
+data:
+  instruct_data: "/app/dataset/test_gen-00000-of-00001-3d4cd8309148a71f/train.jsonl"
+  eval_instruct_data: "/app/dataset/test_gen-00000-of-00001-3d4cd8309148a71f/eval.jsonl"
+  data: ""
+
+model_id_or_path: "models/Mistral-7B-v0.3"
+
+lora:
+  rank: 8
+
+seq_len: 128
+batch_size: 1
+max_steps: 20 
+
+optim:
+  lr: 0.0002
+  weight_decay: 0.01
+  pct_start: 0.02
+
+seed: 42
+log_freq: 5
+eval_freq: 100
+no_eval: True
+ckpt_freq: 100
+
+save_adapters: True  # save only trained LoRA adapters. Set to `False` to merge LoRA adapter into the base model and save full fine-tuned model
+
+run_dir: "output/t_l_m_1"  # Fill
+
+wandb:
+  project: "mistral-7b" # your wandb project name
+  run_name: "test-02"
+  key: "" # your wandb api key
+  offline: True
+
+hugging_face:
+  token: ""
+  model_id: "mistralai/Mistral-7B-v0.3"
+  dataset_url: "https://huggingface.co/datasets/HuggingFaceH4/ultrachat_200k/resolve/main/data/test_gen-00000-of-00001-3d4cd8309148a71f.parquet"
